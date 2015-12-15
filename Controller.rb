@@ -12,7 +12,7 @@
 require './HtmlGetter'
 require './Extracter'
 # スクレイピング先のURL
-url = "http://www.dmm.co.jp/digital/videoa/-/list/=/article=keyword/id=1018/sort=ranking/"
+url = "http://www.dmm.co.jp/digital/videoa/-/list/=/article=keyword/id=1018/limit=120/sort=ranking/sort=ranking/"
 
 extracter = Extracter.new()
 itemHashList = extracter.start(url)

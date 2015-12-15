@@ -7,16 +7,25 @@ class Extracter
     def start(topLink)
         htmlGetter = HtmlGetter.new()
         doc = htmlGetter.getHtmlContents(topLink)
+        #総アイテム数を取得
+        itemCount = getItemCount( doc )
+        
         itemNodes = doc.xpath("//p[@class='tmb']" )
         contentsLinks=[]
-        
-        itemNodes.each{|childrenlist|
-              contentsLinks.push( childrenlist.css("a").attribute("href").value)
-        }
+       itemNodes.each{|childrenlist|
+           contentsLinks.push( childrenlist.css("a").attribute("href").value)
+       }
 
-        itemHashList = getItemHash( contentsLinks )
+       itemHashList = getItemHash( contentsLinks )
         return itemHashList
     end
+
+    def getItemCount( doc )
+        itemCountElement = doc.xpath("//div[@class='list-boxcaptside list-boxpagenation'] //p").inner_text
+        itemCountElement2 = itemCountElement.match(/^(.*?)タイトル中.*?$/)
+        return itemCountElement2[1]
+    end
+
 
     def getItemHash( contentsLinks )
         itemHashList =[]
