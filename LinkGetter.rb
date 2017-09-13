@@ -1,14 +1,40 @@
 require 'open-uri'
 require 'nokogiri'
-require 'yaml'
 require './HtmlGetter'
 
-class Extracter
+class LinkGetter
 
-    def start(topLink)
-        htmlGetter = HtmlGetter.new()
-        doc = htmlGetter.getHtmlContents(topLink)
-   pp doc;
+    @topLink
+
+    @itemCount
+
+    @perLoop
+
+    @LoopCount
+
+    include HtmlGetter
+
+    def initialize(topLink, perLoop)
+        @topLink = topLink
+        @perLoop = perLoop || 120
+    end
+
+
+    public def start()
+        doc = getHtmlContents(@topLink)
+        setLoopCount(doc)
+        links =  getLinks()
+    end
+
+    private def setLoopCount(doc)
+        itemCount = getItemCount(doc)
+        @loopCount = itemCount.to_i / @perLoop
+    end
+
+    private def getLinks()
+
+
+    end
         #総アイテム数を取得
   #      itemCount = getItemCount( doc )
   #      loopCnt = itemCount.to_i / 120
@@ -31,13 +57,12 @@ class Extracter
   #          itemHashList = getItemHash( contentsLinks )
   #          p itemHashList
   #      end
-    end
-
 
     def getItemCount( doc )
         itemCountElement = doc.xpath("//div[@class='list-boxcaptside list-boxpagenation'] //p").inner_text
         itemCountElement2 = itemCountElement.match(/^(.*?)タイトル中.*?$/)
-        return itemCountElement2[1]
+        pp itemCountElement2[1]
+        return itemCountElement2[1].delete(",")
     end
 
 

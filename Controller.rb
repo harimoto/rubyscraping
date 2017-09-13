@@ -9,13 +9,14 @@
 #result2 = result.fetch
 #
 #p result2
+require 'yaml'
+require 'pp'
 require './HtmlGetter'
-require './Extracter'
+require './LinkGetter'
 # スクレイピング先のURL
 url = "http://www.dmm.co.jp/digital/videoa/-/list/=/article=keyword/id=1018/sort=ranking/sort=ranking/"
-
-extracter = Extracter.new()
-itemHashList = extracter.start(url)
-p itemHashList
-
+pp url
+linkGetter = LinkGetter.new(url, 120)
+linkGetter.start();
+pp linkGetter
 
