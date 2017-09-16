@@ -1,6 +1,5 @@
 require 'open-uri'
 require 'nokogiri'
-require 'yaml'
 require './HtmlGetter'
 
 class Extracter
