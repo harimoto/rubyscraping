@@ -60,3 +60,21 @@ pp arr5
     "pref"=>"kanagawa",
     "mail"=>" satoshi@gmail.com"}]}
 =end
+
+arr6 = [
+    {'class' => 'A', 'type'=>'2' , 'pref' => 'chiba'},
+    {'class' => 'A', 'type'=>'3' , 'pref' => 'tokyo'},
+    {'class' => 'A', 'type'=>'2' , 'pref' => 'chiba'},
+    {'class' => 'B', 'type'=>'1' , 'pref' => 'tokyo'},
+];
+
+arr7 = arr6.group_by{|person| person['class'] + '_'+ person['type']}
+pp arr7
+
+=begin
+{"A_2"=>
+  [{"class"=>"A", "type"=>"2", "pref"=>"chiba"},
+   {"class"=>"A", "type"=>"2", "pref"=>"chiba"}],
+ "A_3"=>[{"class"=>"A", "type"=>"3", "pref"=>"tokyo"}],
+ "B_1"=>[{"class"=>"B", "type"=>"1", "pref"=>"tokyo"}]}
+=end
