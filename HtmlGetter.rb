@@ -12,5 +12,4 @@ module HtmlGetter
     doc = Nokogiri::HTML.parse(html, nil, charset)
     return doc
   end
-
 end

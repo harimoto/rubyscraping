@@ -46,6 +46,22 @@ str3 = arr.join("<br>")
 p str3
 #=>"aaa<br>bb<br>cc"
 
+page_source = open("samplepage.html", &:read)
+
+dates = page_source.scan(/(\d+)年(\d+)月(\d+)日/)
+
+url_titles = page_source.scan(/^<a href="(.+?)">(.+?)<\/a><br \/>/)
+
+#array_combineに近い
+#[0,2]はインデックスの範囲
+pp dates[0,2].zip(url_titles[0,2])
+
+#若干複雑だがはいれつの展開
+url_titles.zip(dates).map{| (aurl, atitle), date_info |
+ pp aurl
+ pp atitle
+ pp date_info
+}
 
 
 
