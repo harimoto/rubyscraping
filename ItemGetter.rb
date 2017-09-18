@@ -6,30 +6,30 @@ require 'pp'
 
 class ItemGetter
 
-  @itemLink
+  @item_link
 
   include HtmlGetter
-  def initialize(itemLink)
-    @itemLink = itemLink
+  def initialize(item_link)
+    @item_link = item_link
   end
 
   public def start()
-    doc = getHtmlContents(@itemLink)
-    item = getItem(doc)
+    doc = get_html_contents(@item_link)
+    item = get_item(doc)
   end
 
-  private def getItem(doc)
+  private def get_item(doc)
     item = Item.new()
 
-    item.contentsCode = getContentsCode()
-    item.contentsName = getContentsName(doc)
-    item.summary    = getSummary(doc)
+    item.contents_code = get_contents_code()
+    item.contents_name = get_contents_name(doc)
+    item.summary    = get_summary(doc)
 
     return item
   end
 
-  private def getContentsCode()
-     tmp = @itemLink.match(/^.*cid=(\w+)\/.*$/)
+  private def get_contents_code()
+     tmp = @item_link.match(/^.*cid=(\w+)\/.*$/)
      if (tmp != nil)
         return tmp[1]
      else
@@ -37,17 +37,17 @@ class ItemGetter
      end
   end
 
-  private def getContentsName(doc)
+  private def get_contents_name(doc)
     return doc.xpath("//h1[@id='title']").text
   end
 
-  private def getSummary(doc)
+  private def get_summary(doc)
     return doc.xpath("//div[@class='mg-b20 lh4']").text
   end
 
 
 
-  def extractItemContents(tds)
+  def extract_item_contents(tds)
     stringTextMode=""
     itemHash ={}
 

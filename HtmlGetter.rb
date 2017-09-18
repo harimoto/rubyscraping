@@ -2,7 +2,7 @@ require 'open-uri'
 require 'nokogiri'
 
 module HtmlGetter
-  def getHtmlContents(url)
+  def get_html_contents(url)
     charset = nil
     html = open(url) do |f|
       charset = f.charset # 文字種別を取得

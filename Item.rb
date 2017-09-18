@@ -1,6 +1,6 @@
 class Item
 
-  attr_accessor :contentsName, :contentsCode, :summary
+  attr_accessor :contents_name, :contents_code, :summary
 
   def initialize()
 
