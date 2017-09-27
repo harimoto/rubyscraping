@@ -10,13 +10,15 @@
 #
 #p result2
 require 'yaml'
-require 'pp'
-require './HtmlGetter'
+require './ItemGetter'
 require './LinkGetter'
+
 # スクレイピング先のURL
-url = "http://www.dmm.co.jp/digital/videoa/-/list/=/article=keyword/id=1018/sort=ranking/sort=ranking/"
-pp url
-linkGetter = LinkGetter.new(url, 120)
-linkGetter.start();
-pp linkGetter
+#url = 'http://www.dmm.com/digital/cinema/-/list/=/limit=30/sort=date/';
+#   linkGetter = LinkGetter.new(url, 120)
+#pp linkGetter.start()
+
+url = 'http://www.dmm.com/digital/cinema/-/detail/=/cid=5116tcbd06332/?i3_ref=list&i3_ord=8';
+itemGetter = ItemGetter.new(url)
+pp itemGetter.start()
 
