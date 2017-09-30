@@ -18,7 +18,7 @@ require './LinkGetter'
 #   linkGetter = LinkGetter.new(url, 120)
 #pp linkGetter.start()
 
-url = 'http://www.dmm.com/digital/cinema/-/detail/=/cid=5116tcbd06332/?i3_ref=list&i3_ord=8';
-itemGetter = ItemGetter.new(url)
-pp itemGetter.start()
+#url = 'http://www.dmm.com/digital/cinema/-/detail/=/cid=5116tcbd06332/?i3_ref=list&i3_ord=8';
+#itemGetter = ItemGetter.new(url)
+#pp itemGetter.start()
 
